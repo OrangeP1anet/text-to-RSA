@@ -3,6 +3,15 @@ from math import gcd
 import numpy as np
 
 def main():
+
+    st.markdown(
+        """
+        1. txtファイルアップロード
+        2. readfile
+        3. download
+        """
+    )
+
     #Streamlitにファイルアップロード
     file = st.file_uploader("Choose a file")
     plaintext = ""
