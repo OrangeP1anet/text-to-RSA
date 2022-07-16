@@ -4,6 +4,7 @@ from math import gcd
 
 def main():
 
+    # タイトル
     st.title(".txt file to encrypt or decrypt")
     st.markdown(
         """
@@ -13,24 +14,31 @@ def main():
         """
     )
 
+    # ページ内でp, qを入力
     p = st.number_input("p = ", key=int, step=1)
     q = st.number_input("q = ", key=int, step=1)
 
     # Streamlitにファイルアップロード
     file = st.file_uploader("Choose a file")
 
-    # ファイルがアップロードされていたら
+    # ファイルがアップロードされていなければ実行されない
     if file != None:
+
+        # plaintextにfileの中身を代入
         plaintext = readfile(file)
         encrypted_text = plaintext
         decrypted_text = ""
 
+        # 鍵の生成
         public_key, private_key = generate_keys(int(p), int(q))
 
         # 暗号化
         if st.button("encrypt", key=2):
+
+            # 暗号化処理
             encrypted_text = encrypt(plaintext, public_key)
 
+            # ページ出力
             st.text(
                 f"""
             秘密鍵: {public_key}
@@ -45,13 +53,17 @@ def main():
             """
             )
 
+            # ダウンロードリンク
             href = f'<a href="data:text/plain;charset=UTF-8,{sanitize(encrypted_text)}" download="encrypted_file.txt">Download File</a> (right-click and save as encrypted_file.txt)'
             st.markdown(href, unsafe_allow_html=True)
 
         # 復号化
         if st.button("decrypt", key=3):
+
+            # 復号化処理
             decrypted_text = decrypt(encrypted_text, private_key)
 
+            # ページ出力
             st.text(
                 f"""
             秘密鍵: {public_key}
@@ -65,6 +77,7 @@ def main():
             """
             )
 
+            # ダウンロードリンク
             href = f'<a href="data:text/plain;charset=UTF-8,{decrypted_text}" download="decrypted_file.txt">Download File</a> (right-click and save as decrypted_file.txt)'
             st.markdown(href, unsafe_allow_html=True)
 
