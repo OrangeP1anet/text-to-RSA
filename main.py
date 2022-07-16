@@ -1,6 +1,5 @@
 import streamlit as st
 from math import gcd
-import numpy as np
 
 
 def main():
