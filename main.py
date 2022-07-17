@@ -5,7 +5,7 @@ from math import gcd
 def main():
 
     # タイトル
-    st.title(".txt file to encrypt or decrypt")
+    st.title("encrypt or decrypt of .txt file")
     st.markdown(
         """
         #### 1. Insert number p, q
