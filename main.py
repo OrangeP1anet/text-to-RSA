@@ -15,8 +15,8 @@ def main():
     )
 
     # ページ内でp, qを入力
-    p = st.number_input("p = ", key=int, step=1)
-    q = st.number_input("q = ", key=int, step=1)
+    p = st.number_input("p = ", key=int, step=1, value=101)
+    q = st.number_input("q = ", key=int, step=1, value=3259)
 
     # Streamlitにファイルアップロード
     file = st.file_uploader("Choose a file")
